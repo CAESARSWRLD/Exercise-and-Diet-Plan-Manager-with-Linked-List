@@ -127,7 +127,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="DietPlan.cpp" />
+    <ClCompile Include="ExercisePlan.cpp" />
+    <ClCompile Include="FitnessAppWrapper.cpp" />
     <ClCompile Include="main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="DietPlan.hpp" />
+    <ClInclude Include="ExercisePlan.hpp" />
+    <ClInclude Include="FitnessAppWrapper.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="dietPlans.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
