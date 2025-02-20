@@ -20,12 +20,7 @@ void main()
 
 	FitnessAppWrapper app;
 
-	int choice = 0;
-	app.displayMenu();
 
-	std::cin >> choice;
-
-	std::cout << "your choice: " << choice << std::endl;
 	
 	std::cout << "HEY\n\n";
 

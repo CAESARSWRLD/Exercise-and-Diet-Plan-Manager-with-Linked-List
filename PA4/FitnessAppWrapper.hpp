@@ -1,11 +1,28 @@
 #ifndef FITNESSAPPWRAPPER_HPP
 #define FITNESSAPPWRAPPER_HPP
 #include <iostream>
+#include <string>
+#include <fstream>
+
 class FitnessAppWrapper
 {
-	public:
 
-		
+	private:
+
+		void loadDailyPlan(std::ifstream& inputfile)
+		{
+			std::string line;
+
+			while (std::getline(inputfile, line))
+			{
+			std::cout << line << std::endl;
+			}
+		}
+
+	//void loadDailyPlan(ifstream &fileStream)
+
+
+	public:
 
 		void displayMenu()
 		{
@@ -15,8 +32,59 @@ class FitnessAppWrapper
 
 		}
 
+		void FitnessAppWrapper::runApp()
+		{
+			int choice = 0;
+
+			displayMenu();
+
+			std::cin >> choice;
+
+
+			switch (choice)
+			{
+			case 1:
+			
+				break;
+			case 2:
+
+				break;
+			case 3:
+
+				break;
+			case 4:
+
+				break;
+			case 5:
+
+				break;
+			case 6:
+
+				break;
+			case 7:
+
+				break;
+			case 8:
+
+				break;
+			case 9:
+
+				break;
+			default:
+				std::cout << "error. Invalid input";
+
+			}
+			std::cout << "your choice: " << choice << std::endl;
+		}
+	
+
+
 	char diet_plan[7];
 	char exercise_plan[7];
+
+
+	
+	
 
 
 };
