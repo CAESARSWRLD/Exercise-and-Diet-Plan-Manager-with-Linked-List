@@ -1,7 +1,27 @@
-Plan name
-Goal
-Date in the form mm/dd/yyyy
+Burrtio Day
+200 grams of protein
+05/24/2025
 
-Plan name
-Goal
-Date in the form mm/dd/yyyy
+candy Day
+200 grams of protein
+05/24/2025
+
+candy Day
+200 grams of protein
+05/24/2025
+
+spaghetti Day
+200 grams of protein
+05/25/2025
+
+chicken Day
+200 grams of protein
+05/24/2025
+
+taco Day
+200 grams of protein
+05/25/2025
+
+churro Day
+200 grams of protein
+05/24/2025
