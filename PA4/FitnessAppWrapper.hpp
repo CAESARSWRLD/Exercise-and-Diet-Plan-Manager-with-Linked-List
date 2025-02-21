@@ -33,10 +33,7 @@ private:
 
 public:
 
-	void loadDailyDietPlan_madePublic()
-	{
 
-	}
 	void displayMenu();
 
 	void runApp();

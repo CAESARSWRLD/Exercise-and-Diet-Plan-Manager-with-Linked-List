@@ -1,85 +1,136 @@
 #include "FitnessAppWrapper.hpp"
 
 
-void loadDailyDietPlan(std::ifstream& inputfile, DietPlan weeklyPlan[])//loads one record from the stream
+void FitnessAppWrapper::loadDailyDietPlan(std::ifstream& inputfile, DietPlan dailyPlan[])//loads one record from the stream
 {
 	std::string line;
 
-	int i = 0;
-	while (i < 4)
-	{
+	
+	
 
-		std::getline(inputfile, line);
-		std::cout << line << std::endl;
+	std::getline(inputfile, line);
+	std::cout << line << std::endl;
+	dailyPlan->name = line;
 
-		weeklyPlan[i].name = line;
-		i++;
+	std::cout << dailyPlan->name << std::endl;
 
-	}
+
+	std::getline(inputfile, line);
+	std::cout << line << std::endl;
+	dailyPlan->goal_calories = std::stoi(line);
+
+	std::cout << dailyPlan->goal_calories << std::endl;
+
+
+	std::getline(inputfile, line);
+	std::cout << line << std::endl;
+	dailyPlan->date = std::stoi(line);
+
+	std::cout << dailyPlan->date << std::endl;
+
+
+	std::cout << line << std::endl;
+
+	
 }
 
-void loadDailyExercisePlan(std::ifstream& inputfile, ExercisePlan weeklyPlan[])//loads one record from the stream
+void FitnessAppWrapper::loadDailyExercisePlan(std::ifstream& inputfile, ExercisePlan dailyPlan[])//loads one record from the stream
 {
+	
+
 	std::string line;
 
-	int i = 0;
-	while (i < 4)
-	{
 
-		std::getline(inputfile, line);
-		std::cout << line << std::endl;
 
-		weeklyPlan[i].name = line;
-		i++;
 
-	}
+	std::getline(inputfile, line);
+	std::cout << line << std::endl;
+	dailyPlan->name = line;
+
+	std::cout << dailyPlan->name << std::endl;
+
+
+	std::getline(inputfile, line);
+	std::cout << line << std::endl;
+	dailyPlan->goal_steps = std::stoi(line);
+
+	std::cout << dailyPlan->goal_steps << std::endl;
+
+
+	std::getline(inputfile, line);
+	std::cout << line << std::endl;
+	dailyPlan->date = std::stoi(line);
+
+	std::cout << dailyPlan->date << std::endl;
+
+
+	std::cout << line << std::endl;
 }
 
-void loadWeeklyExercisePlan(std::ifstream& inputfile, ExercisePlan weeklyPlan[])
+void FitnessAppWrapper::loadWeeklyExercisePlan(std::ifstream& inputfile, ExercisePlan weeklyPlan[])
 {
 	std::string line;
 
 	int j = 0;
-	while (j < 7)//loop read through the whole week
+	while (j < 7)//loop and read through the whole week
 	{
-		int i = 0;
-		while (i < 4)
-		{
 
-			std::getline(inputfile, line);
-			std::cout << line << std::endl;
+		std::getline(inputfile, line);
+		weeklyPlan[j].name = line;
+		std::cout << weeklyPlan[j].name << std::endl;
 
-			weeklyPlan[i].name = line;
-			i++;
 
-		}
+
+		std::getline(inputfile, line);
+		int goalcals = std::stoi(line);
+		weeklyPlan[j].goal_steps = goalcals;
+		std::cout << weeklyPlan[j].goal_steps << std::endl;
+
+
+
+		std::getline(inputfile, line);
+		weeklyPlan[j].date = line;
+		std::cout << weeklyPlan[j].date << std::endl;
+
+
+		std::getline(inputfile, line);
 		j++;
 	}
 }
 
-void loadWeeklyDietPlan(std::ifstream& inputfile, DietPlan weeklyPlan[])
+void  FitnessAppWrapper::loadWeeklyDietPlan(std::ifstream& inputfile, DietPlan dailyPlan[])
 {
 	std::string line;
 
 	int j = 0;
-	while (j < 7)//loop read through the whole week
+	while (j < 7)//loop and read through the whole week
 	{
-		int i = 0;
-		while (i < 4)
-		{
+		
+		std::getline(inputfile, line);//read line into line
+		dailyPlan[j].name = line;//set class variable equal to line
+		std::cout << dailyPlan[j].name << std::endl;
 
-			std::getline(inputfile, line);
-			std::cout << line << std::endl;
 
-			weeklyPlan[i].name = line;
-			i++;
 
-		}
+		std::getline(inputfile, line);
+		int goalcals = std::stoi(line);
+		dailyPlan[j].goal_calories = goalcals;
+		std::cout << dailyPlan[j].goal_calories << std::endl;
+
+
+
+		std::getline(inputfile, line);
+		dailyPlan[j].date = line;
+		std::cout << dailyPlan[j].date << std::endl;
+
+
+
+		std::getline(inputfile, line);
 		j++;
 	}
 }
 
-void displayMenu()
+void FitnessAppWrapper::displayMenu()
 {
 	std::cout << "Menu:\n(1) Load weekly diet plan from file\n(2) Load weekly exercise plan from file\n(3) Store weekly diet plan to file" << std::endl;
 	std::cout << "(4) Store weekly exercise plan to file\n(5) Display weekly diet plan to screen\n(6) Diplay weekly exercise plan to screen" << std::endl;
@@ -87,9 +138,7 @@ void displayMenu()
 
 }
 
-
-
-void runApp()
+void FitnessAppWrapper::runApp()
 {
 
 
@@ -116,11 +165,11 @@ void runApp()
 		std::cout << "failed to open exercise plan file\n";
 	}
 
+
+
 	//std::vector<int> myDietVector[120];
 
 	DietPlan myDietPlanArray[120];
-
-
 
 
 
@@ -146,25 +195,25 @@ void runApp()
 
 			loadWeeklyDietPlan(inFileDietPlan, myDietPlanArray);
 			break;
-		case 2:
+		case 2://load weekly exercise plan
 			loadWeeklyExercisePlan(inFileExercisePlan, weeklyExercisePlanArray);
 			break;
-		case 3:
+		case 3://store weekly diet plan to file
 
 			break;
-		case 4:
+		case 4://store weekyly exercise plan to file
 
 			break;
-		case 5:
+		case 5://display weekly diet plan to screen
 
 			break;
-		case 6:
+		case 6://display weekly exercise plan to screen
 
 			break;
-		case 7:
+		case 7://edit daily diet plan
 
 			break;
-		case 8:
+		case 8://edit daily exercise plan
 
 			break;
 		case 9:
@@ -189,15 +238,3 @@ void runApp()
 	char diet_plan[7];
 	char exercise_plan[7];
 }
-
-
-
-
-
-
-
-
-
-
-
-

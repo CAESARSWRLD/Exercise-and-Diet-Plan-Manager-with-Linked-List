@@ -10,8 +10,6 @@ public:
 	std::string name;
 	std::string date;
 
-
-
 };
 
 
