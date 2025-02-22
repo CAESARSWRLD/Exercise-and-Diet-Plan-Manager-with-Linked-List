@@ -15,8 +15,11 @@ public:
 	///constructors
 
 	//default constructor
-	DietPlan() : goal_calories(0), name("default plan name"), date("default date") {}
+	DietPlan() : goal_calories(0), name("default plan name"), date("default date") {
+		std::cout << "default constructor has been called\n";
+	}
 	
+
 
 	//constructor with parameters
 	DietPlan(int new_goal_cals, std::string new_name, std::string new_date)

@@ -180,9 +180,9 @@ void FitnessAppWrapper::runApp()
 
 	//std::vector<int> myDietVector[120];
 
-	DietPlan myDietPlanArray[120];
+	DietPlan* myDietPlanArray = new DietPlan[1];
 
-	ExercisePlan weeklyExercisePlanArray[120];
+	ExercisePlan* weeklyExercisePlanArray = new ExercisePlan[1];
 
 
 	bool exited = false;
