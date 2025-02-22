@@ -28,7 +28,10 @@ private:
 	void displayDailyPlan();
 
 
-	//void loadDailyPlan(ifstream &fileStream)
+	void storeWeeklyDietPlanToFile(std::ifstream& inputfile, ExercisePlan weeklyPlan[]);
+
+
+	void storeWeeklyExercisePlanToFile(std::ifstream& inputfile, ExercisePlan weeklyPlan[]);
 
 
 public:
@@ -39,6 +42,9 @@ public:
 	void runApp();
 
 };
+
+
+
 
 
 #endif

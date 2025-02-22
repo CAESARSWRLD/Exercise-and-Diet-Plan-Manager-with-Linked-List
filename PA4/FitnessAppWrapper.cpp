@@ -135,8 +135,19 @@ void FitnessAppWrapper::displayMenu()
 	std::cout << "Menu:\n(1) Load weekly diet plan from file\n(2) Load weekly exercise plan from file\n(3) Store weekly diet plan to file" << std::endl;
 	std::cout << "(4) Store weekly exercise plan to file\n(5) Display weekly diet plan to screen\n(6) Diplay weekly exercise plan to screen" << std::endl;
 	std::cout << "(7) Edit daily diet plan\n(8) Edit daily exercise plan\n(9) Exit" << std::endl;
+}
+
+void FitnessAppWrapper::storeWeeklyDietPlanToFile(std::ifstream& inputfile, ExercisePlan weeklyPlan[])
+{
 
 }
+
+void FitnessAppWrapper::storeWeeklyExercisePlanToFile(std::ifstream& inputfile, ExercisePlan weeklyPlan[])
+{
+
+}
+
+
 
 void FitnessAppWrapper::runApp()
 {
@@ -171,8 +182,6 @@ void FitnessAppWrapper::runApp()
 
 	DietPlan myDietPlanArray[120];
 
-
-
 	ExercisePlan weeklyExercisePlanArray[120];
 
 
@@ -199,7 +208,7 @@ void FitnessAppWrapper::runApp()
 			loadWeeklyExercisePlan(inFileExercisePlan, weeklyExercisePlanArray);
 			break;
 		case 3://store weekly diet plan to file
-
+			
 			break;
 		case 4://store weekyly exercise plan to file
 

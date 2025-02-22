@@ -30,6 +30,9 @@
     <ClCompile Include="FitnessAppWrapper.cpp">
       <Filter>classes</Filter>
     </ClCompile>
+    <ClCompile Include="Node.cpp">
+      <Filter>classes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DietPlan.hpp">
@@ -41,8 +44,12 @@
     <ClInclude Include="FitnessAppWrapper.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Node.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="dietPlans.txt" />
+    <Text Include="exercisePlans.txt" />
   </ItemGroup>
 </Project>

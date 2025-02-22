@@ -10,6 +10,8 @@ public:
 	std::string name;
 	std::string date;
 
+	ExercisePlan(int goal_steps, std::string name, std::string) {}
+
 };
 
 

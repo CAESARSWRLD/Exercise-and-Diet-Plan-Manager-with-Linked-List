@@ -131,11 +131,13 @@
     <ClCompile Include="ExercisePlan.cpp" />
     <ClCompile Include="FitnessAppWrapper.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Node.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DietPlan.hpp" />
     <ClInclude Include="ExercisePlan.hpp" />
     <ClInclude Include="FitnessAppWrapper.hpp" />
+    <ClInclude Include="Node.hpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="dietPlans.txt" />
