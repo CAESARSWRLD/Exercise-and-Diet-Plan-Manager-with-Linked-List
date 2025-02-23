@@ -1,6 +1,7 @@
 #ifndef EXERCISEPLAN_HPP
 #define EXERCISEPLAN_HPP
 #include <string>
+#include <iostream>
 
 class ExercisePlan
 {
@@ -13,7 +14,12 @@ public:
 	//default constructor
 	ExercisePlan() : goal_steps(0), name("default exercise plan name"), date("default exercise date") {}
 
-
+	///overloaded stream extraction
+	friend std::istream& operator>>(std::istream& input_from_file, ExercisePlan& plan)
+	{
+		input_from_file >> plan.goal_steps >> plan.name >> plan.date;
+		return input_from_file;
+	}
 
 	//constructor with parameters
 	ExercisePlan(int new_goal_steps, std::string new_name, std::string new_date)

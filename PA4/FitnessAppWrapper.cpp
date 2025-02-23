@@ -40,8 +40,8 @@ void FitnessAppWrapper::loadDailyExercisePlan(std::ifstream& inputfile, Exercise
 
 	std::string line;
 
-
-
+	//setter implementation
+	//DietPlan::set_goal_calories();
 
 	std::getline(inputfile, line);
 	std::cout << line << std::endl;
@@ -69,65 +69,77 @@ void FitnessAppWrapper::loadDailyExercisePlan(std::ifstream& inputfile, Exercise
 
 void FitnessAppWrapper::loadWeeklyExercisePlan(std::ifstream& inputfile, ExercisePlan weeklyPlan[])
 {
+	Node* pHead = new Node();
+	
+	ExercisePlan plan;
+
 	std::string line;
 
 	int j = 0;
 	while (j < 7)//loop and read through the whole week
 	{
 
-		std::getline(inputfile, line);
-		weeklyPlan[j].name = line;
-		std::cout << weeklyPlan[j].name << std::endl;
+		std::cin >> plan;
+		pHead->first_node_string = line;
+		std::cout << pHead->first_node_string << std::endl;
 
 
 
 		std::getline(inputfile, line);
 		int goalcals = std::stoi(line);
-		weeklyPlan[j].goal_steps = goalcals;
-		std::cout << weeklyPlan[j].goal_steps << std::endl;
+		pHead->node_integerValue = goalcals;
+		std::cout << pHead->node_integerValue << std::endl;
 
 
 
 		std::getline(inputfile, line);
-		weeklyPlan[j].date = line;
-		std::cout << weeklyPlan[j].date << std::endl;
+		pHead->second_node_string = line;
+		std::cout << pHead->second_node_string << std::endl;
 
 
 		std::getline(inputfile, line);
+
+		pHead->pNext = pHead;
 		j++;
 	}
+
+	delete pHead;
 }
 
 void  FitnessAppWrapper::loadWeeklyDietPlan(std::ifstream& inputfile, DietPlan dailyPlan[])
 {
+	Node* pHead = new Node();
+
 	std::string line;
 
 	int j = 0;
 	while (j < 7)//loop and read through the whole week
 	{
-		
-		std::getline(inputfile, line);//read line into line
-		dailyPlan[j].name = line;//set class variable equal to line
-		std::cout << dailyPlan[j].name << std::endl;
+
+		std::getline(inputfile, line);
+		pHead->first_node_string = line;
+		std::cout << pHead->first_node_string << std::endl;
 
 
 
 		std::getline(inputfile, line);
 		int goalcals = std::stoi(line);
-		dailyPlan[j].goal_calories = goalcals;
-		std::cout << dailyPlan[j].goal_calories << std::endl;
+		pHead->node_integerValue = goalcals;
+		std::cout << pHead->node_integerValue << std::endl;
 
 
 
 		std::getline(inputfile, line);
-		dailyPlan[j].date = line;
-		std::cout << dailyPlan[j].date << std::endl;
-
+		pHead->second_node_string = line;
+		std::cout << pHead->second_node_string << std::endl;
 
 
 		std::getline(inputfile, line);
+
 		j++;
 	}
+
+	delete pHead;
 }
 
 void FitnessAppWrapper::displayMenu()

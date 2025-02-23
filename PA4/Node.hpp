@@ -13,6 +13,14 @@ public:
 	std::string first_node_string;
 	std::string second_node_string;
 
+	//default contructor
+	Node() : first_node_string(""), node_integerValue(0), second_node_string(""), pNext(nullptr) {}
+
+	//constructor with parameters
+	Node(const std::string& first_string, int intvalue, const std::string& second_string)
+		: first_node_string(first_string), node_integerValue(intvalue), second_node_string(second_string), pNext(nullptr) {}
+
+
 	Node(int new_node_integerValue, std::string new_first_node_string, std::string new_second_node_string)
 	{
 		node_integerValue = new_node_integerValue;

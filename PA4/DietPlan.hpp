@@ -12,13 +12,23 @@ public:
 	std::string name;
 	std::string date;
 
-	///constructors
+
+	
+
+
 
 	//default constructor
 	DietPlan() : goal_calories(0), name("default plan name"), date("default date") {
 		std::cout << "default constructor has been called\n";
 	}
 	
+
+	///overloaded stream extraction
+	friend std::ifstream& operator>>(std::ifstream& input_from_file, DietPlan& plan)
+	{
+		input_from_file >> plan.goal_calories >> plan.name >> plan.date;
+		return input_from_file;
+	}
 
 
 	//constructor with parameters

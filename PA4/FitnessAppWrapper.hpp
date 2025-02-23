@@ -7,6 +7,7 @@
 #include <vector>
 #include "DietPlan.hpp"
 #include "ExercisePlan.hpp"
+#include "Node.hpp"
 
 class FitnessAppWrapper
 {
