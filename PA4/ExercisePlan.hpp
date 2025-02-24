@@ -2,67 +2,69 @@
 #define EXERCISEPLAN_HPP
 #include <string>
 #include <iostream>
+#include <fstream>
+#include "DietPlan.hpp"
+
 
 class ExercisePlan
 {
-public:
+	///insput and output overloaded operators
+	friend std::istream& operator>>(std::istream& inStream, ExercisePlan& plan);//read in
+	friend std::ostream& operator<<(std::ostream& inSteam, const ExercisePlan& plan);//read out
+
+
+
+private:
 
 	int goal_steps;
 	std::string name;
 	std::string date;
 
-	//default constructor
-	ExercisePlan() : goal_steps(0), name("default exercise plan name"), date("default exercise date") {}
-
-	///overloaded stream extraction
-	friend std::istream& operator>>(std::istream& input_from_file, ExercisePlan& plan)
-	{
-		input_from_file >> plan.goal_steps >> plan.name >> plan.date;
-		return input_from_file;
-	}
-
-	//constructor with parameters
-	ExercisePlan(int new_goal_steps, std::string new_name, std::string new_date)
-	{
-		goal_steps = new_goal_steps;
-		name = new_name;
-		date = new_date;
-	}
+public:
 
 
 
-	/////GETTERS AND SETTERS
-	int get_goal_steps() const
+	ExercisePlan() : goal_steps(0), name(""), date("") {}
+
+
+
+	
+	//
+	int getGoalSteps() const
 	{
 		return goal_steps;
 	}
 
-	void set_goal_steps(int new_goal_steps)
+	void setGoalSteps(int goal)
 	{
-		goal_steps = new_goal_steps;
+		goal_steps = goal;
 	}
 
-	std::string get_name() const
-	{
-		return name;
-	}
-
-	void set_name(const std::string& new_name)
+	//
+	void setPlanName(const std::string& new_name)
 	{
 		name = new_name;
 	}
 
-	std::string get_date()
+	const std::string& getPlanName() const
 	{
-		return date;
+		return name;
 	}
 
-	void set_date(const std::string& new_date)
+	//
+	void setDate(const std::string& new_date)
 	{
 		date = new_date;
 	}
 
+	const std::string& getDate() const
+	{
+		return date;
+	}
+	
 };
+
+
 
 
 

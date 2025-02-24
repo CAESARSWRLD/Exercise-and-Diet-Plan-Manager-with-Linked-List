@@ -3,80 +3,58 @@
 #include <string>
 #include <fstream>
 #include <iostream>
+#include "ExercisePlan.hpp"
 
 class DietPlan
 {
+	///insput and output overloaded operators
+	friend std::istream& operator>>(std::istream& inStream, DietPlan& plan);//read in
+	friend std::ostream& operator<<(std::ostream& inSteam, const DietPlan& plan);//read out
+
+private:
+
+    int goal_calories;
+    std::string name;
+    std::string date;
+
+
 public:
 
-	int goal_calories;
-	std::string name;
-	std::string date;
 
 
-	
+	DietPlan() : goal_calories(0), name(""), date("") {}
 
 
 
-	//default constructor
-	DietPlan() : goal_calories(0), name("default plan name"), date("default date") {
-		std::cout << "default constructor has been called\n";
-	}
-	
-
-	///overloaded stream extraction
-	friend std::ifstream& operator>>(std::ifstream& input_from_file, DietPlan& plan)
-	{
-		input_from_file >> plan.goal_calories >> plan.name >> plan.date;
-		return input_from_file;
-	}
 
 
-	//constructor with parameters
-	DietPlan(int new_goal_cals, std::string new_name, std::string new_date)
-	{
-		goal_calories = new_goal_cals;
-		name = new_name;
-		date = new_date;
-	}
-
-	//copy constructor
-	DietPlan(const DietPlan& copy) : goal_calories(copy.goal_calories), name(copy.name), date(copy.date) 
-	{
-	std::cout << "copy created" << std::endl;
-	}
-
-	/////GETTERS AND SETTERS
-	int get_goal_calories() const
+	int getGoalCalories() const
 	{
 		return goal_calories;
 	}
 
-	void set_goal_calories(int new_goal_calories)
+
+
+	void setGoalCalories(int goal)
 	{
-		goal_calories = new_goal_calories;
+		goal_calories = goal;
 	}
 
-	std::string get_name() const
-	{
-		return name;
-	}
-
-	void set_name(const std::string& new_name)
+	void setPlanName(const std::string& new_name)
 	{
 		name = new_name;
 	}
 
-	std::string get_date()
-	{
-		return date;
-	}
-
-	void set_date(const std::string& new_date)
+	void setDate(const std::string& new_date)
 	{
 		date = new_date;
 	}
 
+
 };
+
+
+
 
 
 #endif

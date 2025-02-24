@@ -9,38 +9,43 @@
 #include "ExercisePlan.hpp"
 #include "Node.hpp"
 
+
+
 class FitnessAppWrapper
 {
-
 private:
 
-	void loadDailyExercisePlan(std::ifstream& inputfile, ExercisePlan weeklyPlan[]);//loads one record from the stream
+
+	Node* pHead_diet;
+	Node* pTail_diet;
+	Node* pHead_exercise;
+	Node* pTail_exercise;
+
+
+
+	void loadDailyExercisePlan(std::ifstream& inputfile, Node*& pHead_exercise);//loads one record from the stream
+	
+	void loadDailyDietPlan(std::ifstream& inputfile, Node*& pHead);//loads one record from the stream
+	
+	void loadWeeklyDietPlan(std::ifstream& inputfile, Node*& pHead);
+
+	void loadWeeklyExercisePlan(std::ifstream& inputfile, Node*& pHead);
+
+	void displayDailyDietPlan();
+
+	void displayWeeklyDietPlan();
+
 	
 
-	void loadDailyDietPlan(std::ifstream& inputfile, DietPlan weeklyPlan[]);//loads one record from the stream
 	
-
-	void loadWeeklyDietPlan(std::ifstream& inputfile, DietPlan weeklyPlan[]);
-
-
-	void loadWeeklyExercisePlan(std::ifstream& inputfile, ExercisePlan weeklyPlan[]);
-
-
-	void displayDailyPlan();
-
-
-	void storeWeeklyDietPlanToFile(std::ifstream& inputfile, ExercisePlan weeklyPlan[]);
-
-
-	void storeWeeklyExercisePlanToFile(std::ifstream& inputfile, ExercisePlan weeklyPlan[]);
-
-
+	
 public:
-
+	
+	FitnessAppWrapper() : pHead_diet(nullptr), pTail_diet(nullptr), pHead_exercise(nullptr), pTail_exercise(nullptr) {}
 
 	void displayMenu();
 
-	void runApp();
+	void runApp(void);
 
 };
 

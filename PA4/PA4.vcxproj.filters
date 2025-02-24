@@ -30,9 +30,6 @@
     <ClCompile Include="FitnessAppWrapper.cpp">
       <Filter>classes</Filter>
     </ClCompile>
-    <ClCompile Include="Node.cpp">
-      <Filter>classes</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DietPlan.hpp">
