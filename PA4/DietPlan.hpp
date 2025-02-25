@@ -7,9 +7,7 @@
 
 class DietPlan
 {
-	///insput and output overloaded operators
-	friend std::istream& operator>>(std::istream& inStream, DietPlan& plan);//read in
-	friend std::ostream& operator<<(std::ostream& inSteam, const DietPlan& plan);//read out
+	
 
 private:
 
@@ -21,7 +19,7 @@ private:
 public:
 
 
-
+	//default constructor
 	DietPlan() : goal_calories(0), name(""), date("") {}
 
 
@@ -50,6 +48,15 @@ public:
 		date = new_date;
 	}
 
+
+
+	std::istream& operator>>(std::istream& is, DietPlan& plan) {
+    // Assuming DietPlan has fields like name, calories, etc.
+    std::getline(is, plan.name);  // Read a string (adjust for your actual class)
+    is >> plan.calories;          // Read an integer (adjust for your actual class)
+    // Add any other fields you need to read from the input
+    return is;
+	}
 
 };
 

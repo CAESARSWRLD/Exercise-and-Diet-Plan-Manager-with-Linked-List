@@ -8,9 +8,7 @@
 
 class ExercisePlan
 {
-	///insput and output overloaded operators
-	friend std::istream& operator>>(std::istream& inStream, ExercisePlan& plan);//read in
-	friend std::ostream& operator<<(std::ostream& inSteam, const ExercisePlan& plan);//read out
+
 
 
 
@@ -19,6 +17,8 @@ private:
 	int goal_steps;
 	std::string name;
 	std::string date;
+
+
 
 public:
 

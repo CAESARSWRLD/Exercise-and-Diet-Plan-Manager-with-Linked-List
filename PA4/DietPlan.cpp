@@ -1,20 +1,29 @@
 #include "DietPlan.hpp"
 #include "Node.hpp"
-
-std::istream& operator>>(std::istream& inStream, DietPlan& plan)
+#include "FitnessAppWrapper.hpp"
+std::istream& FitnessAppWrapper::operator>>(std::istream& inputfile, Node*& pHead_diet)
 {
-	std::getline(inStream, plan.name);
+    DietPlan plan;
 
-	int steps;
-	inStream >> steps;
+    inputfile >> plan;
 
-	plan.setGoalCalories(steps);
+    if (!inputfile) {
+        std::cerr << "Failed to read a diet plan!" << std::endl;
+        return;
+    }
 
-	inStream.ignore();
+    Node* newNode = new Node(plan);
 
-	std::getline(inStream, plan.date);
-
-	return inStream;
+    if (pHead_diet == nullptr)
+    {
+        pHead_diet = newNode;
+        pTail_diet = newNode;
+    }
+    else
+    {
+        pTail_diet->pNext = newNode;
+        pTail_diet = newNode;
+    }
 }
 
 std::ostream& operator<<(std::ostream& outStream, const DietPlan& plan)
