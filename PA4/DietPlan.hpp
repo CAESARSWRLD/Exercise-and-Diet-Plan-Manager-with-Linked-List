@@ -50,13 +50,16 @@ public:
 
 
 
-	std::istream& operator>>(std::istream& is, DietPlan& plan) {
-    // Assuming DietPlan has fields like name, calories, etc.
-    std::getline(is, plan.name);  // Read a string (adjust for your actual class)
-    is >> plan.calories;          // Read an integer (adjust for your actual class)
-    // Add any other fields you need to read from the input
-    return is;
+	friend std::istream& operator>>(std::istream& is, DietPlan& plan) 
+	{
+		std::getline(is, plan.name);  
+		is >> plan.goal_calories;         
+    
+		return is;
 	}
+
+
+	friend std::ostream& operator<<(std::ostream& outStream, const DietPlan& plan);
 
 };
 

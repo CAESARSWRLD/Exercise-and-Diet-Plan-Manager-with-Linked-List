@@ -62,6 +62,11 @@ public:
 		return date;
 	}
 	
+	friend std::istream& operator>>(std::istream& inStream, ExercisePlan& plan);
+
+
+
+
 };
 
 

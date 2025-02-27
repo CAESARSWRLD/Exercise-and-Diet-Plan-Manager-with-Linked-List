@@ -16,10 +16,3 @@ std::istream& operator>>(std::istream& inStream, ExercisePlan& plan)
 	return inStream;
 }
 
-std::ostream& operator<<(std::ostream& outStream, const ExercisePlan& plan)
-{
-	outStream << plan.name << "\n";
-	outStream << plan.goal_steps << "\n";
-	outStream << plan.date << "\n";
-	return outStream;
-}

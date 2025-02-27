@@ -1,7 +1,9 @@
 #include "DietPlan.hpp"
 #include "Node.hpp"
 #include "FitnessAppWrapper.hpp"
-std::istream& FitnessAppWrapper::operator>>(std::istream& inputfile, Node*& pHead_diet)
+
+
+std::istream& operator>>(std::istream& inputfile, Node*& pHead_diet)
 {
     DietPlan plan;
 

@@ -4,11 +4,11 @@
 #include <iostream>
 
 
-std::istream& FitnessAppWrapper::operator>>(std::istream& inputfile, Node*& pHead_diet)
+
+std::istream& FitnessAppWrapper::operator>>(std::istream& inputfile)
 {
     DietPlan plan;
-
-    inputfile >> plan;  // Use the operator>> for DietPlan that we defined earlier
+    inputfile >> plan;
 
     if (!inputfile) {
         std::cerr << "Failed to read a diet plan!" << std::endl;
@@ -17,18 +17,19 @@ std::istream& FitnessAppWrapper::operator>>(std::istream& inputfile, Node*& pHea
 
     Node* newNode = new Node(plan);
 
-    if (pHead_diet == nullptr) {
+    if (pHead_diet == nullptr)
+    {
         pHead_diet = newNode;
-        pTail_diet = newNode;  // Initialize pTail_diet to the first node
+        pTail_diet = newNode;
     }
-    else {
+    else
+    {
         pTail_diet->pNext = newNode;
-        pTail_diet = newNode;  // Update pTail_diet to the new node
+        pTail_diet = newNode;
     }
 
     return inputfile;
 }
-
 
 
 void FitnessAppWrapper::loadDailyExercisePlan(std::ifstream& inputfile, Node*& pHead_exercise)
