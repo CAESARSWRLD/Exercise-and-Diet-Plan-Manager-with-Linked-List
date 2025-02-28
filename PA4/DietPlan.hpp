@@ -24,13 +24,20 @@ public:
 
 
 
-
+	std::string getDate() const
+	{
+		return date;
+	}
 
 	int getGoalCalories() const
 	{
 		return goal_calories;
 	}
 
+	std::string getName() const 
+	{
+		return name;
+	}
 
 
 	void setGoalCalories(int goal)
@@ -48,6 +55,8 @@ public:
 		date = new_date;
 	}
 
+	
+
 
 
 	friend std::istream& operator>>(std::istream& is, DietPlan& plan) 
@@ -57,10 +66,6 @@ public:
     
 		return is;
 	}
-
-
-	friend std::ostream& operator<<(std::ostream& outStream, const DietPlan& plan);
-
 };
 
 

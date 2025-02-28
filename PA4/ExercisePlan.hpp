@@ -17,9 +17,6 @@ private:
 	int goal_steps;
 	std::string name;
 	std::string date;
-
-
-
 public:
 
 
@@ -62,11 +59,6 @@ public:
 		return date;
 	}
 	
-	friend std::istream& operator>>(std::istream& inStream, ExercisePlan& plan);
-
-
-
-
 };
 
 

@@ -10,7 +10,8 @@ std::istream& FitnessAppWrapper::operator>>(std::istream& inputfile)
     DietPlan plan;
     inputfile >> plan;
 
-    if (!inputfile) {
+    if (!inputfile) 
+    {
         std::cerr << "Failed to read a diet plan!" << std::endl;
         return inputfile;
     }
@@ -32,65 +33,65 @@ std::istream& FitnessAppWrapper::operator>>(std::istream& inputfile)
 }
 
 
-void FitnessAppWrapper::loadDailyExercisePlan(std::ifstream& inputfile, Node*& pHead_exercise)
-{
-	ExercisePlan plan;
+//void FitnessAppWrapper::loadDailyExercisePlan(std::ifstream& inputfile, Node*& pHead_exercise)
+//{
+//	ExercisePlan plan;
+//
+//	inputfile >> plan;
+//
+//	Node* newNode = new Node(plan);
+//
+//	if (pHead_exercise == nullptr)
+//	{
+//		pHead_exercise = newNode;
+//
+//		pTail_exercise = newNode;
+//
+//	}
+//	else
+//	{
+//		pTail_exercise->pNext = newNode;
+//
+//		pTail_exercise = newNode;
+//	}
+//}
 
-	inputfile >> plan;
+//void FitnessAppWrapper::loadWeeklyExercisePlan(std::ifstream& inputfile, Node*& pHead_exercise)
+//{
+//	for (int i = 0; i < 8; ++i)
+//	{
+//		loadDailyExercisePlan(inputfile, pHead_exercise);
+//	}
+//}
 
-	Node* newNode = new Node(plan);
-
-	if (pHead_exercise == nullptr)
-	{
-		pHead_exercise = newNode;
-
-		pTail_exercise = newNode;
-
-	}
-	else
-	{
-		pTail_exercise->pNext = newNode;
-
-		pTail_exercise = newNode;
-	}
-}
-
-void FitnessAppWrapper::loadWeeklyExercisePlan(std::ifstream& inputfile, Node*& pHead_exercise)
-{
-	for (int i = 0; i < 8; ++i)
-	{
-		loadDailyExercisePlan(inputfile, pHead_exercise);
-	}
-}
-
-void FitnessAppWrapper::displayDailyDietPlan(int dayIndex)
-{
-    Node* current = pHead_diet;
-
-    // Traverse the list until we reach the desired day index (0-based)
-    for (int i = 0; current != nullptr && i < dayIndex; ++i) {
-        current = current->pNext;  // Move to the next day
-    }
-
-    // If the day exists, print it. Otherwise, show a message that the day is invalid
-    if (current != nullptr) {
-        std::cout << "Diet Plan for Day " << (dayIndex + 1) << ":\n";
-        std::cout << current->dietPlan << std::endl;  // Assuming you've overloaded the `<<` operator for `DietPlan`
-    }
-    else {
-        std::cout << "Invalid day index. No diet plan found for the specified day." << std::endl;
-    }
-}
+//void FitnessAppWrapper::displayDailyDietPlan(int dayIndex)
+//{
+//    Node* current = pHead_diet;
+//
+//    // Traverse the list until we reach the desired day index (0-based)
+//    for (int i = 0; current != nullptr && i < dayIndex; ++i) {
+//        current = current->pNext;  // Move to the next day
+//    }
+//
+//    // If the day exists, print it. Otherwise, show a message that the day is invalid
+//    if (current != nullptr) {
+//        std::cout << "Diet Plan for Day " << (dayIndex + 1) << ":\n";
+//        std::cout << current->dietPlan << std::endl;  // Assuming you've overloaded the `<<` operator for `DietPlan`
+//    }
+//    else {
+//        std::cout << "Invalid day index. No diet plan found for the specified day." << std::endl;
+//    }
+//}
 
 
-void FitnessAppWrapper::displayWeeklyDietPlan()
-{
-    std::cout << "Weekly Diet Plan:\n";
-    // Loop through each day and display its diet plan
-    for (int i = 0; i < 7; ++i) {
-        displayDailyDietPlan(i);  // Display each day's diet plan (0 to 6)
-    }
-}
+//void FitnessAppWrapper::displayWeeklyDietPlan()
+//{
+//    std::cout << "Weekly Diet Plan:\n";
+//    // Loop through each day and display its diet plan
+//    for (int i = 0; i < 7; ++i) {
+//        displayDailyDietPlan(i);  // Display each day's diet plan (0 to 6)
+//    }
+//}
 
 inline void FitnessAppWrapper::displayMenu()
 {
@@ -131,7 +132,7 @@ void FitnessAppWrapper::runApp()
         {
         case 1:
             std::cout << "Loading weekly diet plan from file...\n";
-            loadWeeklyDietPlan(inputFileDiet, pHead_diet);
+            //loadWeeklyDietPlan(inputFileDiet, pHead_diet);
             break;
         case 2:
             // Option 2: Load weekly exercise plan from file
@@ -148,7 +149,7 @@ void FitnessAppWrapper::runApp()
             break;
         case 5:
             std::cout << "Displaying weekly diet plan...\n";
-            displayWeeklyDietPlan();
+            //displayWeeklyDietPlan();
             break;
         case 6:
             std::cout << "Displaying weekly exercise plan...\n";
