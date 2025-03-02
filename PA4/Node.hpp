@@ -14,8 +14,8 @@ public:
 	ExercisePlan exercisePlan;
 	Node* pNext;
 
-	Node(const DietPlan& diet) : dietPlan(diet), exercisePlan(ExercisePlan()), pNext(nullptr) {}
-	Node(const ExercisePlan& exercise) : exercisePlan(exercise), dietPlan(DietPlan()), pNext(nullptr) {}
+	Node(const DietPlan& diet) : dietPlan(diet), pNext(nullptr) {}
+	Node(const ExercisePlan& exercise) : exercisePlan(exercise), pNext(nullptr) {}
 };
 
 #endif //NODE_HPP

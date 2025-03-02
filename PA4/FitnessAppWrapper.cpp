@@ -2,7 +2,11 @@
 #include <fstream>
 #include <string>
 #include <iostream>
-
+#include <cstdio>
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <cstring>
+#include "linkedList.hpp"
 
 
 std::istream& FitnessAppWrapper::operator>>(std::istream& inputfile)
@@ -109,15 +113,17 @@ inline void FitnessAppWrapper::displayMenu()
 void FitnessAppWrapper::runApp()
 {
     std::ifstream inputFileDiet;
-    inputFileDiet.open("dietPlan.txt");
+    inputFileDiet.open("dietPlans.txt");
+
 
     if (!inputFileDiet)
     {
-    std:: cout << "ERROR ERROR";
+    std:: cout << "ERROR OPENING THE TXT FILE\n\n";
     }
 	int choice = 0;
 
 	bool exited = false;
+    linkedList* list = new linkedList();
 
 	while (!exited)
 	{
@@ -127,12 +133,13 @@ void FitnessAppWrapper::runApp()
 		std::cin.ignore();
 
 
-
         switch (choice) 
         {
         case 1:
+
+
             std::cout << "Loading weekly diet plan from file...\n";
-            //loadWeeklyDietPlan(inputFileDiet, pHead_diet);
+            loadWeeklyDietPlan(inputFileDiet, pHead_diet, list);
             break;
         case 2:
             // Option 2: Load weekly exercise plan from file
@@ -149,7 +156,7 @@ void FitnessAppWrapper::runApp()
             break;
         case 5:
             std::cout << "Displaying weekly diet plan...\n";
-            //displayWeeklyDietPlan();
+            list->displayList();
             break;
         case 6:
             std::cout << "Displaying weekly exercise plan...\n";
@@ -174,38 +181,50 @@ void FitnessAppWrapper::runApp()
             break;
         }
 	}
+
+    delete list;
 }
 
 
-void FitnessAppWrapper::loadDailyDietPlan(std::ifstream& inputfile, Node*& pHead_diet)
+void FitnessAppWrapper::loadDailyDietPlan(std::ifstream& inputfile, Node*& pHead_diet, linkedList*& list)
 {
     DietPlan plan;
 
-    inputfile >> plan;
 
-    if (!inputfile) {
-        std::cerr << "Failed to read a diet plan!" << std::endl;
-        return;
-    }
 
-    Node* newNode = new Node(plan);
+    std::string line_str;
 
-    if (pHead_diet == nullptr)
-    {
-        pHead_diet = newNode;
-        pTail_diet = newNode;
-    }
-    else
-    {
-        pTail_diet->pNext = newNode;
-        pTail_diet = newNode;
-    }
+    std::getline(inputfile, line_str, '\n');
+    plan.setPlanName(line_str);
+    std::cout << plan.getName() << std::endl;
+    std::cout << "this is the name^^^" << std::endl;
+
+
+    std::getline(inputfile, line_str, '\n');
+    int line_int = std::stoi(line_str);//convert string to integer for goal cals
+    plan.setGoalCalories(line_int);
+    std::cout << plan.getGoalCalories() << std::endl;
+    std::cout << "this is the goal cals^^^" << std::endl;
+
+    std::getline(inputfile, line_str, '\n');
+    plan.setDate(line_str);
+    std::cout << plan.getDate() << std::endl;
+    std::cout << "this is the date^^^" << std::endl;
+
+    list->insertEnd(plan);
+    std::getline(inputfile, line_str, '\n');//skip a line
 }
 
-void FitnessAppWrapper::loadWeeklyDietPlan(std::ifstream& inputfile, Node*& pHead_diet)
+void FitnessAppWrapper::loadWeeklyDietPlan(std::ifstream& inputfile, Node*& pHead_diet, linkedList*& list)
 {
 	for (int i = 0; i < 7; ++i)
 	{
-		loadDailyDietPlan(inputfile, pHead_diet);
+        if (!inputfile)
+        {
+            return;
+        }
+
+
+		loadDailyDietPlan(inputfile, pHead_diet, list);
 	}
 }

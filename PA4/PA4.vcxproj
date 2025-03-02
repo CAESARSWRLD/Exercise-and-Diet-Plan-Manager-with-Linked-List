@@ -136,6 +136,7 @@
     <ClInclude Include="DietPlan.hpp" />
     <ClInclude Include="ExercisePlan.hpp" />
     <ClInclude Include="FitnessAppWrapper.hpp" />
+    <ClInclude Include="linkedList.hpp" />
     <ClInclude Include="Node.hpp" />
   </ItemGroup>
   <ItemGroup>
