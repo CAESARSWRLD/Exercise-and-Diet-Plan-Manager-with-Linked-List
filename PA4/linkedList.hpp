@@ -20,6 +20,7 @@ public:
 	}
 
 	void insertEnd_diet(const DietPlan& dietplan)//inserts a node at the end of the linked list
+
 	{
 		Node* newestNode = new Node(dietplan);
 
@@ -37,6 +38,7 @@ public:
 			}
 			temp->pNext = newestNode;//link the list
 		}
+		newestNode->pNext = nullptr;
 	}
 
 
@@ -60,8 +62,6 @@ public:
 		}
 	}
 
-
-
 	void displayWeeklyPlan_diet() const;
 
 	void displayDailyPlan_diet(Node* tempNode)const;
@@ -69,8 +69,10 @@ public:
 	void displayWeeklyPlan_exercise() const;
 
 	void displayDailyPlan_exercise(Node* tempNode) const;
-		
-		
+
+	void editGoalCalories() const;
+
+	void editGoalSteps() const;
 
 };
 

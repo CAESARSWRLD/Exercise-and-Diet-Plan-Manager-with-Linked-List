@@ -21,6 +21,12 @@ private:
 	int goal_steps;
 	std::string name;
 	std::string date;
+
+
+	friend std::ifstream& operator>>(std::ifstream& input, ExercisePlan& plan);//overloading string extraction:
+	friend std::ostream& operator<<(std::ostream& output, const ExercisePlan& plan);
+
+
 public:
 
 
@@ -41,34 +47,8 @@ public:
 	ExercisePlan(const ExercisePlan& plan) : name(plan.name), goal_steps(plan.goal_steps), date(plan.date) {}
 
 
-	/*friend void editGoal_exercise(linkedList*& list)
-	{
-		std::string day_to_edit;
-		std::cout << "Input the name of the exercise day you would like to edit\n";
-		std::cin >> day_to_edit;
-
-		
-	}*/
 
 
-	friend std::ifstream& operator>>(std::ifstream& input, ExercisePlan& plan)//overloading string extraction:
-	{
-		std::getline(input, plan.name);
-		std::cout << plan.getPlanName();
-		std::cout << "\nthis is the name^^^\n" << std::endl;
-
-		input >> plan.goal_steps;
-		std::cout << plan.getGoalSteps();
-
-		std::cout << "\nthis is the goal steps^^^\n" << std::endl;
-
-		input.ignore();
-
-		std::getline(input, plan.date);
-		std::cout << plan.getDate();
-		std::cout << "\nthis is the date^^^\n" << std::endl;
-		return input;
-	}
 
 
 	
@@ -107,6 +87,26 @@ public:
 		return date;
 	}
 	
+
+	friend std::ifstream& operator>>(std::ifstream& input, ExercisePlan& plan)//overloading string extraction:
+	{
+		std::getline(input, plan.name);
+		std::cout << plan.getPlanName();
+		std::cout << "\nthis is the name^^^\n" << std::endl;
+
+		input >> plan.goal_steps;
+		std::cout << plan.getGoalSteps();
+
+		std::cout << "\nthis is the goal steps^^^\n" << std::endl;
+
+		input.ignore();
+
+		std::getline(input, plan.date);
+		std::cout << plan.getDate();
+		std::cout << "\nthis is the date^^^\n" << std::endl;
+		return input;
+	}
+
 
 	//overloading string insertion:
 	friend std::ostream& operator<<(std::ostream& output, const ExercisePlan& plan)

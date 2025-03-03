@@ -21,7 +21,7 @@ private:
     Node* pTail_exercise = nullptr;
 
 
-    //some of the parameters in functions are irrelevant because I changed some functions after initially making them
+    //some of the parameters in these functions are irrelevant because I changed some functions after initially making them
     void loadDailyExercisePlan(std::ifstream& inputfile, Node*& pHead_exercise, linkedList*& list);
     void loadWeeklyExercisePlan(std::ifstream& inputfile, Node*& pHead, linkedList*& list);
 

@@ -1,4 +1,3 @@
-
 #define _CRT_SECURE_NO_WARNINGS
 #include "FitnessAppWrapper.hpp"
 #include <fstream>
@@ -9,7 +8,7 @@
 #include <cstring>
 #include "Node.hpp"
 #include "linkedList.hpp"
-
+#include <limits>
 
 
 void FitnessAppWrapper::displayMenu()
@@ -39,7 +38,7 @@ void FitnessAppWrapper::runApp()
 		displayMenu();
 		std::cout << "Enter your choice:\n";
 		std::cin >> choice;
-		std::cin.ignore();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
             switch (choice)
             {
@@ -129,18 +128,19 @@ void FitnessAppWrapper::runApp()
             {
                 std::cout << "Displaying weekly exercise plan...\n";
                 list->displayWeeklyPlan_exercise();
+                break;
             }
             case 7:
             {
 
                 std::cout << "Editing daily diet plan...\n";
-                //editGoal_exercise(list);
+                list->editGoalCalories();
                 break;
             }
             case 8:
             {
                 std::cout << "Editing daily exercise plan...\n";
-                // call editDailyExercisePlan() or equivalent
+                list->editGoalSteps();
                 break;
             }
             case 9:
@@ -211,7 +211,7 @@ void FitnessAppWrapper::storeDailyExercisePlan(std::ofstream& outputfile, Node* 
         return;
     }
 
-    outputfile << tempNode->exercisePlan;
+    outputfile << *(tempNode->exercisePlan);
 
 }
 
@@ -239,7 +239,7 @@ void FitnessAppWrapper::storeDailyDietPlan(std::ofstream& outputfile, Node* temp
         return;
     }
 
-    outputfile << tempNode->dietPlan;
+    outputfile << *(tempNode->dietPlan);
     
 }
 

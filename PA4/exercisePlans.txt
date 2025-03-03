@@ -1,27 +1,27 @@
-Lifting Day
+Pushes
 100
 05/24/2003
 
-Cardio Day
+Pulls
 100
 05/25/2025
 
-Lifting Day
+Bench
 100
 05/24/2003
 
-Cardio Day
+Cardio
 100
 05/25/2025
 
-Lifting Day
+Legs
 100
 05/24/2003
 
-Cardio Day
+Pushes
 100
 05/25/2025
 
-Lifting Day
+Pulls
 100
 05/24/2003

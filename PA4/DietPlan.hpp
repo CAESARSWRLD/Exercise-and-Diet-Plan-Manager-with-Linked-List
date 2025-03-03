@@ -42,7 +42,8 @@ public:
 	//copy constructor
 	DietPlan(const DietPlan& plan) : name(plan.name), goal_calories(plan.goal_calories), date(plan.date) {}
 
-	
+	DietPlan(int calories, const std::string& plan_name, const std::string& plan_date)
+        : goal_calories(calories), name(plan_name), date(plan_date) {}
 
 	
 
