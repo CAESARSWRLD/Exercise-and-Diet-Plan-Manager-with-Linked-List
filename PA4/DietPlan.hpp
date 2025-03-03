@@ -3,7 +3,9 @@
 #include <string>
 #include <fstream>
 #include <iostream>
-#include "ExercisePlan.hpp"
+
+
+class ExercisePlan;
 
 class DietPlan
 {
@@ -16,13 +18,33 @@ private:
     std::string date;
 
 
+
+	friend std::ostream& operator<<(std::ostream& output, const DietPlan& plan);
+	friend std::ifstream& operator>>(std::ifstream& input, DietPlan& plan);
+
+
 public:
 
 
 	//default constructor
 	DietPlan() : goal_calories(0), name(""), date("") {}
 
+	//destructor
+	~DietPlan()
+	{
+		//the cout can be uncommented to check the effectiveness of the destructor. 
+		//the destructor is called too often because i used a linked list. the data is stored in the nodes.
 
+
+		//std::cout << "\ndiet plan class destroyed\n";
+	}
+
+	//copy constructor
+	DietPlan(const DietPlan& plan) : name(plan.name), goal_calories(plan.goal_calories), date(plan.date) {}
+
+	
+
+	
 
 	std::string getDate() const
 	{
@@ -58,18 +80,12 @@ public:
 	
 
 
-
-	friend std::istream& operator>>(std::istream& is, DietPlan& plan) 
-	{
-		std::getline(is, plan.name);  
-		is >> plan.goal_calories;         
-    
-		return is;
-	}
+	
+	
 };
 
 
 
 
 
-#endif
+#endif //DIETPLAN_HPP

@@ -3,35 +3,27 @@
 #include "FitnessAppWrapper.hpp"
 
 
-//std::istream& operator>>(std::istream& inputfile, Node*& pHead_diet)
-//{
-//    DietPlan plan;
-//
-//    inputfile >> plan;
-//
-//    if (!inputfile) {
-//        std::cerr << "Failed to read a diet plan!" << std::endl;
-//        return;
-//    }
-//
-//    Node* newNode = new Node(plan);
-//
-//    if (pHead_diet == nullptr)
-//    {
-//        pHead_diet = newNode;
-//        pTail_diet = newNode;
-//    }
-//    else
-//    {
-//        pTail_diet->pNext = newNode;
-//        pTail_diet = newNode;
-//    }
-//}
+std::ifstream& operator>>(std::ifstream& input, DietPlan& plan)//overloading string extraction:
+{
+	std::getline(input, plan.name);
+	std::cout << plan.getName();
+	std::cout << "\nthis is the name^^^\n" << std::endl;
 
-//std::ostream& operator<<(std::ostream& outStream, const DietPlan& plan)
-//{
-//	outStream << plan.name << "\n";
-//	outStream << plan.goal_calories << "\n";
-//	outStream << plan.date << "\n";
-//	return outStream;
-//}
+	input >> plan.goal_calories;
+	std::cout << plan.getGoalCalories();
+
+	std::cout << "\nthis is the goal cals^^^\n" << std::endl;
+
+	input.ignore();
+
+	std::getline(input, plan.date);
+	std::cout << plan.getDate();
+	std::cout << "\nthis is the date^^^\n" << std::endl;
+	return input;
+}
+
+std::ostream& operator<<(std::ostream& output, const DietPlan& plan)//overloading string insertion:
+{
+	output << plan.getName() << "\n" << plan.getGoalCalories() << "\n" << plan.getDate() << "\n\n";
+	return output;
+}

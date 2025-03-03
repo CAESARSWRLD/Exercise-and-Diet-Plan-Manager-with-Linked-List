@@ -9,7 +9,7 @@
 AU: Dylan Hale
 id: 011911760
 
-Description: The program allows the user to interact with a menu which performs different actions on a set of data using linked lists.
+Description: This program allows the user to interact with a menu which performs different actions on a set of data using linked lists.
 */
 
 void main()

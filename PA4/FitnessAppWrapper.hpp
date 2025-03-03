@@ -20,10 +20,23 @@ private:
     Node* pHead_exercise = nullptr;
     Node* pTail_exercise = nullptr;
 
-    void loadDailyExercisePlan(std::ifstream& inputfile, Node*& pHead_exercise);
+
+    //some of the parameters in functions are irrelevant because I changed some functions after initially making them
+    void loadDailyExercisePlan(std::ifstream& inputfile, Node*& pHead_exercise, linkedList*& list);
+    void loadWeeklyExercisePlan(std::ifstream& inputfile, Node*& pHead, linkedList*& list);
+
     void loadDailyDietPlan(std::ifstream& inputfile, Node*& pHead_diet, linkedList*& list);
     void loadWeeklyDietPlan(std::ifstream& inputfile, Node*& pHead, linkedList*& list);
-    void loadWeeklyExercisePlan(std::ifstream& inputfile, Node*& pHead);
+
+
+    void storeWeeklyDietPlan(std::ofstream& outputfile, Node*& pHead, linkedList*& list, bool exited);
+    void storeDailyDietPlan(std::ofstream& outputfile, Node* tempNode, linkedList*& list, bool exited);
+
+    void storeWeeklyExercisePlan(std::ofstream& outputfile, Node*& pHead, linkedList*& list, bool exited);
+    void storeDailyExercisePlan(std::ofstream& outputfile, Node* tempNode, linkedList*& list, bool exited);
+
+    void displayWeeklyPlan_diet() const {}
+    void displayDailyPlan_diet(Node* tempNode) const {}
 
 public:
 
@@ -48,8 +61,7 @@ public:
     }
 
 
-    std::istream& operator>>(std::istream& inputfile);
-    std::ostream& operator<<(std::ostream outputfile);
+    
 
     FitnessAppWrapper() : pHead_diet(nullptr), pTail_diet(nullptr), pHead_exercise(nullptr), pTail_exercise(nullptr) {}
 
