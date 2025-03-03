@@ -92,7 +92,25 @@ void linkedList::editGoalSteps()const//contains some commented debugging couts
             std::cout << "Enter the new goal steps:\n";
             std::cin >> newGoal;
 
-            tempNode->exercisePlan->setGoalSteps(newGoal);
+            if (tempNode->exercisePlan)
+            {
+                tempNode->exercisePlan->setGoalSteps(newGoal);
+
+                std::cout << "updated plan:\n";
+                std::cout << tempNode->exercisePlan->getPlanName() << std::endl;
+                std::cout << tempNode->exercisePlan->getGoalSteps() << std::endl;
+                std::cout << tempNode->exercisePlan->getDate() << std::endl;
+
+                std::string c;
+                std::cout << "input c to continue";
+                std::cin >> c;
+            }
+            else
+            {
+                std::cout << "node is null" << std::endl;
+            }
+            
+
             return;
         }
 
