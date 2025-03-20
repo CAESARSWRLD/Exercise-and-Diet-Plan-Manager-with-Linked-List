@@ -14,13 +14,25 @@ public:
 
 	linkedList() : pHead(nullptr) {}
 
+	~linkedList()//destructor
+	{
+		Node* currentNode = pHead;
+
+		while (currentNode != nullptr)
+		{
+			Node* pNext = currentNode->pNext;
+			delete currentNode;
+			currentNode = pNext;
+		}
+	}
+
+
 	Node* get_pHead()//get head pointer of linked list
 	{
 		return pHead;
 	}
 
 	void insertEnd_diet(const DietPlan& dietplan)//inserts a node at the end of the linked list
-
 	{
 		Node* newestNode = new Node(dietplan);
 

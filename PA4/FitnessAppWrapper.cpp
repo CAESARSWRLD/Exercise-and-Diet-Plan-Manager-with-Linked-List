@@ -13,6 +13,7 @@
 
 void FitnessAppWrapper::displayMenu()
 {
+    std::cout << "To perform actions on a list, it must be the only one loaded after starting the program\n";
     std::cout << "(1) Load weekly diet plan from file\n";
     std::cout << "(2) Load weekly exercise plan from file\n";
     std::cout << "(3) Store weekly diet plan to file\n";
@@ -30,11 +31,13 @@ void FitnessAppWrapper::runApp()
 	int choice = 0;
 
 	bool exited = false;
-
     linkedList* list = new linkedList();
+
 
 	while (!exited)
 	{
+
+
 		displayMenu();
 		std::cout << "Enter your choice:\n";
 		std::cin >> choice;
@@ -54,9 +57,14 @@ void FitnessAppWrapper::runApp()
                 }
 
 
-
                 std::cout << "Loading weekly diet plan from file...\n";
                 loadWeeklyDietPlan(inputFileDiet, pHead_diet, list);
+
+                char nxt;
+                std::cout << "enter any character to continue:\n";
+                std::cin >> nxt;
+
+                system("cls");
 
                 inputFileDiet.close();
             break;
@@ -80,6 +88,15 @@ void FitnessAppWrapper::runApp()
                 std::cout << "Loading weekly exercise plan from file...\n";
                 loadWeeklyExercisePlan(inputFileExercise, pHead_exercise, list);
 
+
+                char nxt;
+                std::cout << "enter any character to continue:\n";
+                std::cin >> nxt;
+
+                system("cls");
+
+
+
                 inputFileExercise.close();
                 break;
             }
@@ -95,6 +112,14 @@ void FitnessAppWrapper::runApp()
 
                 storeWeeklyDietPlan(outputFileDiet, pHead_diet, list, exited);
                 std::cout << "Storing weekly diet plan to file...\n";
+
+
+                char nxt;
+                std::cout << "enter any character to continue:\n";
+                std::cin >> nxt;
+
+                system("cls");
+
 
                 outputFileDiet.close();
                 break;
@@ -115,6 +140,17 @@ void FitnessAppWrapper::runApp()
 
 
                 std::cout << "Storing weekly exercise plan to file...\n";
+
+
+
+                char nxt;
+                std::cout << "enter any character to continue:\n";
+                std::cin >> nxt;
+
+                system("cls");
+
+
+
                 outputFileExercise.close();
                 break;
             }
@@ -122,12 +158,33 @@ void FitnessAppWrapper::runApp()
             {
                 std::cout << "Displaying weekly diet plan...\n";
                 list->displayWeeklyPlan_diet();
+
+
+                char nxt;
+                std::cout << "enter any character to continue:\n";
+                std::cin >> nxt;
+
+                system("cls");
+
+
+
                 break;
             }
             case 6:
             {
                 std::cout << "Displaying weekly exercise plan...\n";
                 list->displayWeeklyPlan_exercise();
+
+
+
+                char nxt;
+                std::cout << "enter any character to continue:\n";
+                std::cin >> nxt;
+
+                system("cls");
+
+
+
                 break;
             }
             case 7:
@@ -156,9 +213,12 @@ void FitnessAppWrapper::runApp()
                 break;
             }
         }
-	}
 
+
+
+	}
     delete list;
+
 }
 
 void FitnessAppWrapper::loadDailyExercisePlan(std::ifstream& inputfile, Node*& pHead_exercise, linkedList*& list)

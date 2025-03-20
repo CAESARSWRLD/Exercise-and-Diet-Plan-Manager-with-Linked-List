@@ -50,12 +50,21 @@ void linkedList::editGoalCalories()const
         if (std::strcmp(tempNode->dietPlan->getName().c_str(), plan_name.c_str()) == 0)
         {
             std::cout << "Plan name found!\n";
-
+            
             int newGoal;
             std::cout << "Enter the new goal calories:\n";
             std::cin >> newGoal;
 
             tempNode->dietPlan->setGoalCalories(newGoal);
+
+
+            system("cls");//clear screen
+
+
+            std::cout << "updated plan:\n";
+            std::cout << *(tempNode->dietPlan);
+
+
             return;
         }
 
@@ -71,6 +80,7 @@ void linkedList::editGoalCalories()const
 
 void linkedList::editGoalSteps()const//contains some commented debugging couts
 {
+    
     std::string plan_name;
     Node* tempNode = pHead;
     std::cout << "What's the name of the exercise plan you would like to edit?:\n";
@@ -96,14 +106,13 @@ void linkedList::editGoalSteps()const//contains some commented debugging couts
             {
                 tempNode->exercisePlan->setGoalSteps(newGoal);
 
-                std::cout << "updated plan:\n";
-                std::cout << tempNode->exercisePlan->getPlanName() << std::endl;
-                std::cout << tempNode->exercisePlan->getGoalSteps() << std::endl;
-                std::cout << tempNode->exercisePlan->getDate() << std::endl;
+                system("cls");//clear screen
 
-                std::string c;
-                std::cout << "input c to continue";
-                std::cin >> c;
+
+                std::cout << "updated plan:\n";
+                std::cout << *(tempNode->exercisePlan);
+
+                
             }
             else
             {

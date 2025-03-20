@@ -91,19 +91,18 @@ public:
 	friend std::ifstream& operator>>(std::ifstream& input, ExercisePlan& plan)//overloading string extraction:
 	{
 		std::getline(input, plan.name);
-		std::cout << plan.getPlanName();
-		std::cout << "\nthis is the name^^^\n" << std::endl;
+		//std::cout << plan.getPlanName();
+		//std::cout << "\nthis is the name^^^\n" << std::endl;
 
 		input >> plan.goal_steps;
-		std::cout << plan.getGoalSteps();
-
-		std::cout << "\nthis is the goal steps^^^\n" << std::endl;
+		//std::cout << plan.getGoalSteps();
+		//std::cout << "\nthis is the goal steps^^^\n" << std::endl;
 
 		input.ignore();
 
 		std::getline(input, plan.date);
-		std::cout << plan.getDate();
-		std::cout << "\nthis is the date^^^\n" << std::endl;
+		//std::cout << plan.getDate();
+		//std::cout << "\nthis is the date^^^\n" << std::endl;
 		return input;
 	}
 
